@@ -13,5 +13,7 @@ function nl2brAozora(txt){
 }
 
 function rubyAozora(txt){
-	return txt.replace(/｜{0,1}([一-龠々]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	txt = txt.replace(/[｜](.+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	txt = txt.replace(/([^ぁ-んァ-ン　／＼ （）「」、。<>]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	return txt;
 }
