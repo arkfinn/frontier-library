@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>青空ルビ</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="../css/common.css">
+<script src="../js/aozora.js"></script>
+<script>
+$(function(){
+$("#go").click(function(){
+		var txt = $("#text").val();
+		txt = rubyAozora(txt);
+		$("#main").html(txt);
+	});
+});
+</script>
+</head>
+<body>
+<a href="../">＜＜戻る</a>
+<h1>ルビチェックツール</h1>
+<p>青空文庫形式のルビを振ったテキストを入力し「変換」を押して下さい。</p>
+<textarea id="text" name="text" rows="10" style="width:100%"></textarea>
+<input type="button" value="変換" id="go">
+<div id="main"></div>
+</body>
+</html>
