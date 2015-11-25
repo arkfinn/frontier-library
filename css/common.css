@@ -3,3 +3,8 @@ body{
 	font-size:16px;
 	line-height:1.75em;
 }
+.ground{
+	text-align:right;
+	margin:0;
+	padding:0;
+}
