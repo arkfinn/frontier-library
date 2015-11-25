@@ -6,7 +6,7 @@ function formatAozora(txt){
 }
 
 function titleAozora(txt){
-	return txt.replace(/^(.*?[\n\r]+?)/g, '<h1 id="title">$1</h1>');
+	return txt.replace(/^(.*?)[\n\r]+?/g, '<h1 id="title">$1</h1>');
 }
 
 function groundAozora(txt){
