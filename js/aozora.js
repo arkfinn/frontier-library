@@ -19,6 +19,6 @@ function nl2brAozora(txt){
 
 function rubyAozora(txt){
 	txt = txt.replace(/[｜](.+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
-	txt = txt.replace(/([^ぁ-んァ-ン　／＼ （）「」、。<>]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	txt = txt.replace(/([^ぁ-んァ-ンゝゞ　／＼ （）「」、。<>]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
 	return txt;
 }
