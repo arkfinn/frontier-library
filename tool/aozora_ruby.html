@@ -10,6 +10,7 @@
 $(function(){
 $("#go").click(function(){
 		var txt = $("#text").val();
+		txt = nl2brAozora(txt);
 		txt = rubyAozora(txt);
 		$("#main").html(txt);
 	});
