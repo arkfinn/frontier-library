@@ -1,6 +1,7 @@
 function formatAozora(txt){
 	txt = titleAozora(txt);
 	txt = groundAozora(txt);
+	txt = endAozora(txt);
 	txt = nl2brAozora(txt);
 	return rubyAozora(txt);
 }
@@ -21,4 +22,8 @@ function rubyAozora(txt){
 	txt = txt.replace(/[｜](.+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
 	txt = txt.replace(/([^ぁ-んァ-ンゝゞ　／＼ （）「」、。<>]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
 	return txt;
+}
+
+function endAozora(txt){
+	return txt.replace(/［＃本文終わり］([\s\S]*)$/, "<div class='author_text'>$1</div>");
 }
