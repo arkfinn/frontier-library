@@ -1,0 +1,18 @@
+body{
+	padding-top: 70px;
+}
+#sitename{
+	margin: 4px;
+	font-family: serif;
+	color: #FFF;
+}
+.back-top{
+	display: block;
+	font-size:2em;
+}
+.author{
+	margin-left:2em;
+}
+.btn .glyphicon {
+font-size:1.5em;
+}
