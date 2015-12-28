@@ -8,8 +8,8 @@ function urlMarkdown(txt){
 }
 
 function subjectMarkdown(txt){
-	txt = txt.replace(/### *?(.*?)[\n\r]/g, "<h3>$1</h3>");
-	txt = txt.replace(/## *?(.*?)[\n\r]/g, "<h2>$1</h2>");
-	txt = txt.replace(/# *?(.*?)[\n\r]/g, "<h1>$1</h1>");
+	txt = txt.replace(/### *?(.*?)[\n\r]/g, "<h3>$1</h3>\n");
+	txt = txt.replace(/## *?(.*?)[\n\r]/g, "<h2>$1</h2>\n");
+	txt = txt.replace(/# *?(.*?)[\n\r]/g, "<h1>$1</h1>\n");
 	return txt;
 }

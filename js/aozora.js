@@ -1,21 +1,31 @@
 function formatAozora(txt){
+	txt = rubyAozora(txt);
 	txt = titleAozora(txt);
-	txt = groundAozora(txt);
+	txt = txt.replace(/^(.*?)[\n\r]+?/mg, function(all, line){
+		if(line.match(/^\</)){
+			return line;
+		}
+		if(line.match(/^［＃地付き］/)){
+			return line.replace(/^［＃地付き］(.*)$/, '<p class="align-end">$1</p>\n');
+		}
+		if(line.match(/^［＃２字下げ］/)){
+			return line.replace(/^［＃２字下げ］(.*)$/, '<p class="indent-2em">$1</p>\n');
+		}
+		if(line.match(/^［＃折り返して２字下げ］/)){
+			return line.replace(/^［＃折り返して２字下げ］(.*)$/, '<p class="h-indent-2em">$1</p>\n');
+		}
+		return '<p>'+line+'</p>\n';
+	});
 	txt = endAozora(txt);
-	txt = nl2brAozora(txt);
-	return rubyAozora(txt);
+	return txt;
 }
 
 function titleAozora(txt){
 	return txt.replace(/^(.*?)[\n\r]+?/g, '<h1 id="title">$1</h1>');
 }
 
-function groundAozora(txt){
-	return txt.replace(/［＃地付き］(.*?[\n\r]+?)/g, '<p class="ground">$1</p>');
-}
-
 function nl2brAozora(txt){
-	return txt.replace(/([\n\r]+?)/g, "$1<br />");
+	return txt.replace(/^(.*?)([\n\r]+?)/gm, "<p>$1</p>$2");
 }
 
 function rubyAozora(txt){
