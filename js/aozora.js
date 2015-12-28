@@ -8,6 +8,9 @@ function formatAozora(txt){
 		if(line.match(/^［＃地付き］/)){
 			return line.replace(/^［＃地付き］(.*)$/, '<p class="align-end">$1</p>\n');
 		}
+		if(line.match(/^［＃１字下げ］/)){
+			return line.replace(/^［＃１字下げ］(.*)$/, '<p class="indent-1em">$1</p>\n');
+		}
 		if(line.match(/^［＃２字下げ］/)){
 			return line.replace(/^［＃２字下げ］(.*)$/, '<p class="indent-2em">$1</p>\n');
 		}
@@ -21,7 +24,7 @@ function formatAozora(txt){
 }
 
 function titleAozora(txt){
-	return txt.replace(/^(.*?)[\n\r]+?/g, '<h1 id="title">$1</h1>');
+	return txt.replace(/^(.*?)[\n\r]+?/g, '<h1 id="title">$1</h1>\n');
 }
 
 function nl2brAozora(txt){
