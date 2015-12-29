@@ -14,7 +14,11 @@ function rubyJtexts(txt){
 }
 
 function readHtml(url) {
-  $.ajax({
+	if(!url.match(/^http\:\/\/www\.j\-texts\.com/))
+	{
+		return;
+	}
+	$.ajax({
     type: 'GET',
     url: url,
     success: function(data) {
