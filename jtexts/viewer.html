@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>J-Texts Viewer</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.xdomainajax/0.11/jquery.xdomainajax.js"></script>
+<link rel="stylesheet" href="../css/common.css">
+<script>
+function rubyJtexts(txt){
+//	txt = txt.replace(/[｜](.+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	txt = txt.replace(/([^ぁ-んァ-ンゝゞ　／＼ 《》「」『』・、。<>]+?)[（(](.+?)[）)]/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	return txt;
+}
+
+function readHtml(url) {
+  $.ajax({
+    type: 'GET',
+    url: url,
+    success: function(data) {
+      $('#main').html(rubyJtexts(data.responseText));
+    },
+    error: function(xhr, status, err) {
+      alert('HTML読み出しで問題がありました:' + url);
+    }
+  });
+}
+function bringQuery()
+{
+	var query = window.location.search.substring(1),
+		parms = query.split('&'),
+		res = [];
+	for (var i=0; i<parms.length; i++)
+	{
+		var pos = parms[i].indexOf('=');
+		if (0 < pos)
+		{
+			res[parms[i].substring(0,pos)] = parms[i].substring(pos+1);
+		}
+	}
+	return res;
+}
+$(function(){
+	var req = bringQuery();
+	var url = req["url"];
+	if(url){
+		$("#url").val(url);
+		readHtml(url);
+	}
+});
+</script>
+</head>
+<body>
+<a href="../">＜＜戻る</a>
+<div>
+	<p><a href="http://www.j-texts.com/index.html">J-Texts</a>を読み込んで整形します。多少の崩れは勘弁下さい。HTML版のURLを入力下さい。</p>
+<input type="text" placeholder="http://" id="url"><input type="button" value="読み込み" onclick="readHtml($('#url').val())">
+</div>
+<div id="main"></div>
+</body>
+</html>
