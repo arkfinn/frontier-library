@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>J-Texts Viewer</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.xdomainajax/0.11/jquery.xdomainajax.js"></script>
+<script src="../js/jquery.xdomainajax.js"></script>
 <link rel="stylesheet" href="../css/common.css">
 <script>
 function rubyJtexts(txt){
@@ -21,7 +21,8 @@ function readHtml(url) {
 	$.ajax({
     type: 'GET',
     url: url,
-    success: function(data) {
+		scriptCharset: "Shift_JIS",
+		success: function(data) {
       $('#main').html(rubyJtexts(data.responseText));
     },
     error: function(xhr, status, err) {
