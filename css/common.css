@@ -16,7 +16,9 @@ rt {
 .indent-1em  { padding-left:  1em; }
 .indent-2em  { padding-left:  2em; }
 .h-indent-2em  { text-indent:  -2em; padding-left:  2em; }
-
+.em-line {
+  text-decoration: underline;
+}
 .float-start { float: left; }
 img{ margin:1em; }
 p{

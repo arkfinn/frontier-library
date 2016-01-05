@@ -1,10 +1,15 @@
 function formatMarkdown(txt){
 	txt = urlMarkdown(txt);
+	txt = weightMarkdown(txt);
 	return subjectMarkdown(txt);
 }
 
 function urlMarkdown(txt){
 	return txt.replace(/(http(s)?:\/\/[\x21-\x7e]+)/gi, "<a href='$1' target='_blank'>$1</a>");
+}
+
+function weightMarkdown(txt){
+	return txt.replace(/\__(.*?)__/g, '<span class="em-line">$1</span>');
 }
 
 function subjectMarkdown(txt){
