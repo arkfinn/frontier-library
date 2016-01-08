@@ -15,7 +15,9 @@ rt {
 
 .indent-1em  { padding-left:  1em; }
 .indent-2em  { padding-left:  2em; }
+.indent-3em  { padding-left:  3em; }
 .h-indent-2em  { text-indent:  -2em; padding-left:  2em; }
+.h-indent-3em  { text-indent:  -3em; padding-left:  3em; }
 .em-line {
   text-decoration: underline;
 }

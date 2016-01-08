@@ -14,8 +14,14 @@ function formatAozora(txt){
 		if(line.match(/^［＃２字下げ］/)){
 			return line.replace(/^［＃２字下げ］(.*)$/, '<p class="indent-2em">$1</p>\n');
 		}
+		if(line.match(/^［＃３字下げ］/)){
+			return line.replace(/^［＃３字下げ］(.*)$/, '<p class="indent-3em">$1</p>\n');
+		}
 		if(line.match(/^［＃折り返して２字下げ］/)){
 			return line.replace(/^［＃折り返して２字下げ］(.*)$/, '<p class="h-indent-2em">$1</p>\n');
+		}
+		if(line.match(/^［＃折り返して３字下げ］/)){
+			return line.replace(/^［＃折り返して３字下げ］(.*)$/, '<p class="h-indent-3em">$1</p>\n');
 		}
 		return '<p>'+line+'</p>\n';
 	});
