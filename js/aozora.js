@@ -23,6 +23,12 @@ function formatAozora(txt){
 		if(line.match(/^［＃折り返して３字下げ］/)){
 			return line.replace(/^［＃折り返して３字下げ］(.*)$/, '<p class="h-indent-3em">$1</p>\n');
 		}
+		if(line.match(/^［＃ここから太字］/)){
+			return "<strong>";
+		}
+		if(line.match(/^［＃ここで太字終わり］/)){
+			return "</strong>";
+		}
 		return '<p>'+line+'</p>\n';
 	});
 	txt = endAozora(txt);
