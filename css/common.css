@@ -27,3 +27,9 @@ p{
 margin:0;
 min-height:1em;
 }
+
+.glyph-img{
+	margin:0 0 -0.15em 0;
+	height:1.05em;
+	width:1.05em;
+}

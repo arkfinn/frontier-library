@@ -1,6 +1,7 @@
 function formatAozora(txt){
 	txt = rubyAozora(txt);
 	txt = titleAozora(txt);
+	txt = txt.replace(/［＃外字：(.*?)］/mg, '<img class="glyph-img" src="../../glyph/$1">\n');
 	txt = txt.replace(/^(.*?)[\n\r]+?/mg, function(all, line){
 		if(line.match(/^\</)){
 			return line;
