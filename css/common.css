@@ -21,12 +21,17 @@ rt {
 .em-line {
   text-decoration: underline;
 }
+.em-sesame{
+  -webkit-text-emphasis-style: filled sesame;
+}
+
 .float-start { float: left; }
 img{ margin:1em; }
 p{
 margin:0;
 min-height:1em;
 }
+
 
 .glyph-img{
 	margin:0 0 -0.15em 0;
