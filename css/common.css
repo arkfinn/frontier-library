@@ -16,6 +16,7 @@ rt {
 .indent-1em  { padding-left:  1em; }
 .indent-2em  { padding-left:  2em; }
 .indent-3em  { padding-left:  3em; }
+.h-indent-1em  { text-indent:  -1em; padding-left:  1em; }
 .h-indent-2em  { text-indent:  -2em; padding-left:  2em; }
 .h-indent-3em  { text-indent:  -3em; padding-left:  3em; }
 .em-line {
@@ -40,5 +41,7 @@ min-height:1em;
 }
 
 .kanbun .okuri{
+	padding: 0;
+	text-indent: 0;
 	line-height:2em;
 }

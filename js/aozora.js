@@ -18,6 +18,9 @@ function formatAozora(txt){
 		if(line.match(/^［＃３字下げ］/)){
 			return line.replace(/^［＃３字下げ］(.*)$/, '<p class="indent-3em">$1</p>\n');
 		}
+		if(line.match(/^［＃折り返して１字下げ］/)){
+			return line.replace(/^［＃折り返して１字下げ］(.*)$/, '<p class="h-indent-1em">$1</p>\n');
+		}
 		if(line.match(/^［＃折り返して２字下げ］/)){
 			return line.replace(/^［＃折り返して２字下げ］(.*)$/, '<p class="h-indent-2em">$1</p>\n');
 		}
@@ -29,6 +32,12 @@ function formatAozora(txt){
 		}
 		if(line.match(/^［＃ここで太字終わり］/)){
 			return "</strong>";
+		}
+		if(line.match(/^［＃ここから１字下げ］/)){
+			return '<div class="indent-1em">';
+		}
+		if(line.match(/^［＃ここで字下げ終わり］/)){
+			return "</div>";
 		}
 		return '<p>'+line+'</p>\n';
 	});

@@ -47,7 +47,7 @@ var kanbun_regex;
     var okuri      = kana + "+|［＃（(?:" + kana_kanji + ")+）］";
     var saidoku    = "(?:" + hyouji +")|(?:" + hihyouji +")";
     var saiokuri      = kana + "+|［＃（(?:" + kana_kanji + ")+）］";
-    var tateten    = "‐";
+    var tateten    = "[‐_]";
     var junjo      = "[一二三四上中下天地人甲乙丙丁]";
     var kunten     = "［＃(?:"+junjo+"|[一上天甲]?レ)］";
 
@@ -128,6 +128,8 @@ function kanbun_match_yomi(match,yomi_p,kanbun_p) {
     var kanji=match[1];
     var yomi=match[2];
     var saidoku=match[4];
+    kanji = (match[6] == "_")? '<u>'+kanji+"</u>" : kanji;
+    kanji = (match[6] == "‐")? kanji+"-" : kanji;
     // 特殊ケース
     if (yomi != undefined && yomi.match(/^〈/)) {
         if (kanbun_p) {
