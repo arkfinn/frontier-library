@@ -39,6 +39,9 @@ function formatAozora(txt){
 		if(line.match(/^［＃ここで字下げ終わり］/)){
 			return "</div>";
 		}
+		if(line.match(/^［＃改ページ］\f*/)){
+			return '<hr class="pagebreak">';
+		}
 		return '<p>'+line+'</p>\n';
 	});
 	txt = endAozora(txt);

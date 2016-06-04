@@ -13,6 +13,8 @@ function weightMarkdown(txt){
 }
 
 function subjectMarkdown(txt){
+	txt = txt.replace(/##### *?(.*?)[\n\r]/g, "<h5>$1</h5>\n");
+	txt = txt.replace(/#### *?(.*?)[\n\r]/g, "<h4>$1</h4>\n");
 	txt = txt.replace(/### *?(.*?)[\n\r]/g, "<h3>$1</h3>\n");
 	txt = txt.replace(/## *?(.*?)[\n\r]/g, "<h2>$1</h2>\n");
 	txt = txt.replace(/# *?(.*?)[\n\r]/g, "<h1>$1</h1>\n");
