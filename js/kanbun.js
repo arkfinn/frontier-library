@@ -35,7 +35,7 @@
 var kanbun_regex;
 
 (function kanbun_regex_setup () {
-    var kanji      = "[㐀-\u9fff]|[豈-\ufaff]|[\ud840-\ud87f][\udc00-\udfff]";
+    var kanji      = "[㐀-\u9fff]|[豈-\ufaff]|[\ud840-\ud87f][\udc00-\udfff]|[「」]";
     var vselector  = "\udb40[\udd00-\uddef]";
     var kutouten   = "[。、]";
     var kanji_unit = "(?:" + kanji+"(?:"+vselector+")?|"+kutouten+")";
