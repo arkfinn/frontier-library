@@ -1,7 +1,17 @@
+/*
+ * format
+ * url is auto link
+ * __word__ underline
+ * # headline
+ * . indent
+ */
+
 function formatMarkdown(txt){
 	txt = urlMarkdown(txt);
 	txt = weightMarkdown(txt);
-	return subjectMarkdown(txt);
+	txt = subjectMarkdown(txt);
+	txt = indentMarkdown(txt);
+	return txt;
 }
 
 function urlMarkdown(txt){
@@ -18,5 +28,14 @@ function subjectMarkdown(txt){
 	txt = txt.replace(/### *?(.*?)[\n\r]/g, "<h3>$1</h3>\n");
 	txt = txt.replace(/## *?(.*?)[\n\r]/g, "<h2>$1</h2>\n");
 	txt = txt.replace(/# *?(.*?)[\n\r]/g, "<h1>$1</h1>\n");
+	return txt;
+}
+
+function indentMarkdown(txt) {
+	txt = txt.replace(/\.\.\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-5em">$1</p>\n');
+	txt = txt.replace(/\.\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-4em">$1</p>\n');
+	txt = txt.replace(/\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-3em">$1</p>\n');
+	txt = txt.replace(/\.\. *?(.*?)[\n\r]/g, '<p class="indent-2em">$1</p>\n');
+	txt = txt.replace(/\. *?(.*?)[\n\r]/g, '<p class="indent-1em">$1</p>\n');
 	return txt;
 }
