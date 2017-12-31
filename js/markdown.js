@@ -11,6 +11,7 @@ function formatMarkdown(txt){
 	txt = weightMarkdown(txt);
 	txt = subjectMarkdown(txt);
 	txt = indentMarkdown(txt);
+	txt = serifMarkdown(txt);
 	return txt;
 }
 
@@ -37,5 +38,13 @@ function indentMarkdown(txt) {
 	txt = txt.replace(/\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-3em">$1</p>\n');
 	txt = txt.replace(/\.\. *?(.*?)[\n\r]/g, '<p class="indent-2em">$1</p>\n');
 	txt = txt.replace(/\. *?(.*?)[\n\r]/g, '<p class="indent-1em">$1</p>\n');
+	return txt;
+}
+
+function serifMarkdown(txt) {
+	txt = txt.replace(/([^\n\r]*?)[\n\r]((; .*?[\n\r])+)/g, function(all, dl, dts) {
+		dt = dts.replace(/; (.*?)[\n\r]/g, '<dd>$1</dd>\n');
+		return '<dl><dt>'+dl+'</dt>'+dt+'</dl>';
+	});
 	return txt;
 }
