@@ -2,6 +2,7 @@
  * format
  * url is auto link
  * __word__ underline
+ * いwordい sesame
  * # headline
  * . indent
  */
@@ -20,7 +21,9 @@ function urlMarkdown(txt){
 }
 
 function weightMarkdown(txt){
-	return txt.replace(/\__(.*?)__/g, '<span class="em-line">$1</span>');
+	txt = txt.replace(/\__(.*?)__/g, '<span class="em-line">$1</span>');
+	txt = txt.replace(/\い(.*?)い/g, '<span class="em-sesame">$1</span>');
+	return txt;
 }
 
 function subjectMarkdown(txt){
