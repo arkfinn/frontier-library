@@ -3,8 +3,10 @@
  * url is auto link
  * __word__ underline
  * ,,word,, sesame
+ * ,,,word,,, circle
  * # headline
  * . indent
+ * <[word] warichu ※未対応
  */
 
 function formatMarkdown(txt){
@@ -17,30 +19,31 @@ function formatMarkdown(txt){
 }
 
 function urlMarkdown(txt){
-	return txt.replace(/(http(s)?:\/\/[\x21-\x7e]+)/gi, "<a href='$1' target='_blank'>$1</a>");
+	return txt.replace(/(http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- :.\/?%&=]*)?)/gi, "<a href='$1' target='_blank'>$1</a>");
 }
 
 function weightMarkdown(txt){
 	txt = txt.replace(/__(.*?)__/g, '<span class="em-line">$1</span>');
+	txt = txt.replace(/,,,(.*?),,,/g, '<span class="em-circle">$1</span>');
 	txt = txt.replace(/,,(.*?),,/g, '<span class="em-sesame">$1</span>');
 	return txt;
 }
 
 function subjectMarkdown(txt){
-	txt = txt.replace(/##### *?(.*?)[\n\r]/g, "<h5>$1</h5>\n");
-	txt = txt.replace(/#### *?(.*?)[\n\r]/g, "<h4>$1</h4>\n");
-	txt = txt.replace(/### *?(.*?)[\n\r]/g, "<h3>$1</h3>\n");
-	txt = txt.replace(/## *?(.*?)[\n\r]/g, "<h2>$1</h2>\n");
-	txt = txt.replace(/# *?(.*?)[\n\r]/g, "<h1>$1</h1>\n");
+	txt = txt.replace(/^##### *?(.*?)[\n\r]/mg, "<h5>$1</h5>\n");
+	txt = txt.replace(/^#### *?(.*?)[\n\r]/mg, "<h4>$1</h4>\n");
+	txt = txt.replace(/^### *?(.*?)[\n\r]/mg, "<h3>$1</h3>\n");
+	txt = txt.replace(/^## *?(.*?)[\n\r]/mg, "<h2>$1</h2>\n");
+	txt = txt.replace(/^# *?(.*?)[\n\r]/mg, "<h1>$1</h1>\n");
 	return txt;
 }
 
 function indentMarkdown(txt) {
-	txt = txt.replace(/\.\.\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-5em">$1</p>\n');
-	txt = txt.replace(/\.\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-4em">$1</p>\n');
-	txt = txt.replace(/\.\.\. *?(.*?)[\n\r]/g, '<p class="indent-3em">$1</p>\n');
-	txt = txt.replace(/\.\. *?(.*?)[\n\r]/g, '<p class="indent-2em">$1</p>\n');
-	txt = txt.replace(/\. *?(.*?)[\n\r]/g, '<p class="indent-1em">$1</p>\n');
+	txt = txt.replace(/^\.\.\.\.\. *?(.*?)[\n\r]/mg, '<p class="indent-5em">$1</p>\n');
+	txt = txt.replace(/^\.\.\.\. *?(.*?)[\n\r]/mg, '<p class="indent-4em">$1</p>\n');
+	txt = txt.replace(/^\.\.\. *?(.*?)[\n\r]/mg, '<p class="indent-3em">$1</p>\n');
+	txt = txt.replace(/^\.\. *?(.*?)[\n\r]/mg, '<p class="indent-2em">$1</p>\n');
+	txt = txt.replace(/^\. *?(.*?)[\n\r]/mg, '<p class="indent-1em">$1</p>\n');
 	return txt;
 }
 

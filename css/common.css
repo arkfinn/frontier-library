@@ -1,7 +1,7 @@
 body{
 	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN',Meiryo,sans-serif;
 	font-size:16px;
-	line-height:2.0em;
+	line-height:32px;
 	padding:1em;
 }
 rt {
@@ -27,12 +27,17 @@ rt {
 .em-sesame{
   -webkit-text-emphasis-style: filled sesame;
 }
+.em-circle {
+  -webkit-text-emphasis-style: circle;
+}
 
 .float-start { float: left; }
 img{ margin:1em; }
 p{
-margin:0.5em 0;
-min-height:1em;
+	margin:0.5em 0;
+	min-height:1em;
+	font-size:16px;
+	line-height:32px;
 }
 
 

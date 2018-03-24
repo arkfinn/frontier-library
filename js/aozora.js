@@ -3,7 +3,7 @@ function formatAozora(txt){
 	txt = titleAozora(txt);
 	txt = txt.replace(/［＃外字：(.*?)］/mg, '<img class="glyph-img" src="../../glyph/$1">\n');
 	txt = txt.replace(/^(.*?)[\n\r]+?/mg, function(all, line){
-		if(line.match(/^\</)){
+		if(!line || line.match(/^\</)){
 			return line;
 		}
 		if(line.match(/^［＃地付き］/)){
@@ -36,6 +36,12 @@ function formatAozora(txt){
 		if(line.match(/^［＃ここから１字下げ］/)){
 			return '<div class="indent-1em">';
 		}
+		if(line.match(/^［＃ここから２字下げ］/)){
+			return '<div class="indent-2em">';
+		}
+		if(line.match(/^［＃ここから３字下げ］/)){
+			return '<div class="indent-3em">';
+		}
 		if(line.match(/^［＃ここで字下げ終わり］/)){
 			return "</div>";
 		}
@@ -58,10 +64,10 @@ function nl2brAozora(txt){
 
 function rubyAozora(txt){
 	txt = txt.replace(/[｜](.+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
-	txt = txt.replace(/([^ぁ-んァ-ンゝゞ　／＼ （）「」『』―・、。<>_\*{}\n\r]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
+	txt = txt.replace(/([^ぁ-んァ-ンゝゞ〻　／＼ （）「」『』―・、。<>_\*{}\n\r]+?)《(.+?)》/g, "<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>");
 	return txt;
 }
 
 function endAozora(txt){
-	return txt.replace(/［＃本文終わり］([\s\S]*)$/, "<div class='author_text'>$1</div>");
+	return txt.replace(/［＃本文終わり］([\s\S]*)$/, "<div class='author-text'>$1</div>");
 }

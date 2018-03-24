@@ -7,127 +7,175 @@
 <meta name="description" content="国立国会図書館デジタルコレクションなどの画像データでしか提供されていないパブリックドメイン文献を文字起こししていくサイト。">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="js/analyze.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/riot@3.8/riot+compiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/riot-route@3.1.2/dist/route.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.12/marked.min.js"></script>-->
+<script src="js/aozora.js"></script>
+<script src="js/markdown.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/site-common.css">
 </head>
 <body>
 <div id="navbar-main">
-  <div class="navbar navbar-inverse navbar-fixed-top">
+  <div id="header-top" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<h1 id="sitename">フロンティア学院図書館</h1>
+				<h1 id="sitename"><a href="#">フロンティア学院図書館</a></h1>
 			</div>
 		</div>
 	</div>
+	<div id="header-navi" class="navbar navbar-fixed-top" style="display:none">
+		<div class="container">
+			<breadcrumb></breadcrumb>
+		</div>
+	</div>	
 </div>
+
 <div class="container">
-<p>国立国会図書館デジタルコレクションなどの画像データでしか提供されていないパブリックドメイン文献を文字起こししていくサイト。次のような方針でやっています。</p>
-<ul>
-  <li>翻刻・組版の正確性より内容の共有を重視します。不明な点は底本を参照下さい。</li>
-  <li>全内容の文字起こしを保証しません。作業中で放棄する時もあります。引き継ぎ歓迎します。</li>
-  <li>校正指摘参加表明その他歓迎します。twitter(@ark_finn)などへ連絡ください。</li>
-	<li>最終目的はkindleで読めること！</li>
-	<li>文字起こしされた各文献の内容は、元文献に基づきパブリックドメインとします。<a href="http://www.aozora.gr.jp/guide/kijyunn.html" target="_blank">青空文庫の基準</a>に準じて取り扱ってください。</li>
-</ul>
-<div class="alert alert-danger" role="alert">現在、置き場所の関係上、電子書籍の配布を中止しています。ご了承ください。</div>
+	<content></content>
+</div>
 
-<h2>文献リスト</h2>
-<table class="table table-hover">
-
-<tr>
-	<td><a href="dl/1170421/">井原西鶴『武家義理物語』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1095165/">石龍子『觀相人物評論』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/824465/">三浦徹『昆布を造る神』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1150180/">迫間房太郎『産金政策の一私見』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1091799/">長谷川尚一『石油なくして何の新秩序の建設ぞ』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1091736/">浅野研真『聖徳太子と社會事業』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1061941/">佐野學『西洋社會思想史』</a></td>
-	<td></td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/1111709/1111709.html">箕作元八『ギリシヤの撥亂』</a></td>
-	<td>作業中</td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/2554896/">井原西鶴『男色大鑑』</a></td>
-	<td>作業中</td>
-	<td></td>
-</tr>
-
-<tr>
-	<td><a href="dl/898793/">『墨子』</a></td>
-	<td>作業中</td>
-	<td></td>
-</tr>
-
-</table>
-<h2>ツール</h2>
-<ul>
-  <li><a href="tool/aozora_ruby.html">青空文庫形式のルビチェックツール</a></li>
-  <li><a href="jtexts/viewer.html">J-Textsテキストのビューア</a></li>
-</ul>
-<h2>リンク</h2>
-<ul>
-<li><a href="http://www.geocities.co.jp/Playtown-Spade/2775/" target="_blank">ここの管理者A-9の本家サイト</a></li>
-<li><a href="http://frontier.hatenablog.jp/" target="_blank">同ブログ</a></li>
-</ul>
-<p>以下は当サイトとは無関係ですが、それぞれ異なった趣旨を掲げて類似の目的で活動しているサイトです。応援しています。</p>
-<ul>
-<li><a href="http://www.aozora.gr.jp/" target="_blank">青空文庫</a></li>
-<li><a href="http://yatanavi.org/" target="_blank">やたがらすナビ</a></li>
-<li><a href="http://www.genpaku.org/" target="_blank">プロジェクト杉田玄白</a></li>
-<li><a href="http://lab.ndl.go.jp/dhii/omk2/" target="_blank">翻デジ2014</a></li>
-</ul>
 <div class="text-right">
 	<a href="https://twitter.com/share" class="twitter-share-button"{count} data-hashtags="frontierlibrary">Tweet</a>
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 <hr>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-63154616-2', 'auto');
-  ga('send', 'pageview');
+<script type="riot/tag">
+<breadcrumb>
+	<ul class="breadcrumb">
+		<li><a href="#">フロンティア学院図書館</a></li>
+		<li><a href="{opts.link}">{opts.title}</a>
+		<li>本文</li>
+	</ul>
+</breadcrumb>
 </script>
 
-</div>
+<script type="riot/tag">
+<index>
+<p>国立国会図書館デジタルコレクションなどの画像データでしか提供されていないパブリックドメイン文献を文字起こししていくサイト。次のような方針でやっています。</p>
+<ul>
+  <li>翻刻・組版の正確性より内容の共有を重視します。不明な点は底本を参照下さい。</li>
+  <li>全内容の文字起こしを保証しません。作業中で放棄する時もあります。引き継ぎ歓迎します。</li>
+  <li>校正指摘参加表明その他歓迎します。twitter(<a href="https://twitter.com/ark_finn" targetr="_blank">@ark_finn</a>)などへ連絡ください。</li>
+	<li>文字起こしされた各文献の内容は、元文献に基づきパブリックドメインとします。<a href="http://www.aozora.gr.jp/guide/kijyunn.html" target="_blank">青空文庫の基準</a>に準じて取り扱ってください。</li>
+</ul>
+	<h2>文献リスト</h2>
+	<ul>
+		<li><a href="dl/1170421/">井原西鶴『武家義理物語』</a></li>
+		<li><a href="dl/1095165/">石龍子『觀相人物評論』</a></li>
+		<li><a href="dl/824465/">三浦徹『昆布を造る神』</a></li>
+		<li><a href="dl/1150180/">迫間房太郎『産金政策の一私見』</a></li>
+		<li><a href="dl/1091799/">長谷川尚一『石油なくして何の新秩序の建設ぞ』</a></li>
+		<li><a href="dl/1091736/">浅野研真『聖徳太子と社會事業』</a></li>
+		<li><a href="dl/1061941/">佐野學『西洋社會思想史』</a></li>
+		<li><a href="dl/1111709/1111709.html">箕作元八『ギリシヤの撥亂』</a>（作業中）</li>
+		<li><a href="dl/2554896/">井原西鶴『男色大鑑』</a>（作業中）</li>
+		<li><a href="dl/898793/">『墨子』</a>（作業中）</li>
+	</ul>
+	<ul>
+		<li each={list}><a href="#/{folder}/">{title}</a></li>
+	</ul>
+	<h2>ツール</h2>
+	<ul>
+	  <li><a href="tool/aozora_ruby.html">青空文庫形式のルビチェックツール</a></li>
+	  <li><a href="jtexts/viewer.html">J-Textsテキストのビューア</a></li>
+	</ul>
+	<h2>リンク</h2>
+	<ul>
+		<li><a href="http://www.geocities.co.jp/Playtown-Spade/2775/" target="_blank">ここの管理者A-9の本家サイト</a></li>
+		<li><a href="http://frontier.hatenablog.jp/" target="_blank">同ブログ</a></li>
+	</ul>
+	<p>以下は当サイトとは無関係ですが、それぞれ異なった趣旨を掲げて類似の目的で活動しているサイトです。応援しています。</p>
+	<ul>
+		<li><a href="http://www.aozora.gr.jp/" target="_blank">青空文庫</a></li>
+		<li><a href="http://yatanavi.org/" target="_blank">やたがらすナビ</a></li>
+		<li><a href="http://www.genpaku.org/" target="_blank">プロジェクト杉田玄白</a></li>
+		<li><a href="http://lab.ndl.go.jp/dhii/omk2/" target="_blank">翻デジ2014</a></li>
+	</ul>
+
+	document.getElementById("header-top").style.display="block";
+	document.getElementById("header-navi").style.display="none";
+	fetch('list.json').then( function(data) {
+  	return data.json();
+  }).then( function(json) {
+    this.list = json;
+    this.update();
+  }.bind(this));
+
+</index>
+</script>
+
+<script type="riot/tag">
+<detail>
+	<h1>{title}</h1>
+	<p class="author" each={author in authors}>{author}</p>
+	<div class="text-center">
+		<a class="btn btn-default btn-lg" href="#/{opts.folder}{opts.name}/1">読む</a>
+	</div>
+	<hr>
+	<h3>底本</h3>
+	<ul>
+		<li each={url, origin in originals}>
+			<a target="_blank" href="{url}">{origin}</a>
+		</li>
+  </ul>
+	document.getElementById("header-top").style.display="block";
+	document.getElementById("header-navi").style.display="none";
+	const url = opts.folder + "/" + opts.name + "/detail.json";
+	fetch(url).then((data) => {
+  	return data.json();
+	}).then((json) => {
+    this.title = json.title;
+		this.authors = json.authors;
+		this.originals = json.originals;
+    this.update();
+  });
+
+</detail>
+</script>
+
+<script type="riot/tag">
+<text>
+	<div id="text"></div>
+
+	const detail_url = opts.folder + "/" + opts.name + "/detail.json";
+	fetch(detail_url).then((data) => {
+  	return data.json();
+	}).then((json) => {
+		riot.mount("breadcrumb", {title:json.title, link:"#/" + opts.folder + opts.name + "/"});
+		document.getElementById("header-top").style.display="none";
+		document.getElementById("header-navi").style.display="block";
+  });
+
+	const url = opts.folder + "/" + opts.name + "/" + opts.name + "_" + opts.chapter +".txt";
+	fetch(url).then(response => {
+		return response.text();
+	}).then(text => {
+		document.getElementById('text').innerHTML = formatAozora(formatMarkdown(text));
+	});
+</text>
+</script>
+
+<script>
+route("/dl*/*", (name, chapter) => {
+	riot.mount("content", "text", {folder:"dl", name:name, chapter:chapter});
+});
+
+route("/dl*/", (name) => {
+	riot.mount("content", "detail", {folder:"dl", name:name});
+});
+
+route("/*/*", function(name, chapter){
+	riot.mount("content", "text", {name:name, chapter:chapter});
+});
+
+route("", () =>{
+	riot.mount("content", "index");
+});
+
+route.start(true);
+</script>
 </body>
 </html>

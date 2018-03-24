@@ -1,18 +1,31 @@
-body{
+body {
 	padding-top: 70px;
 }
-#sitename{
+
+#sitename {
 	margin: 4px;
 	font-family: serif;
 	color: #FFF;
 }
-.back-top{
+#sitename a {
+	color: #FFF;
+	text-decoration: none;
+}
+#sitename a:visited {
+	color: #FFF;
+}
+
+.back-top {
 	display: block;
 	font-size:2em;
 }
-.author{
+.author {
 	margin-left:2em;
 }
 .btn .glyphicon {
-font-size:1.5em;
+	font-size:1.5em;
+}
+
+.author-text {
+	border-top: 1px solid #eee;
 }
