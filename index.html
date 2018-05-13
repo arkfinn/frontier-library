@@ -37,8 +37,10 @@
 </div>
 
 <div class="text-right">
-	<a href="https://twitter.com/share" class="twitter-share-button"{count} data-hashtags="frontierlibrary">Tweet</a>
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+	<a href="https://twitter.com/share" id="tweet-button" class="twitter-share-button"{count} data-hashtags="frontierlibrary">Tweet</a>
+	<script>
+document.getElementById("tweet-button").setAttribute("href", "https://twitter.com/intent/tweet?url=" + encodeURI(document.location.href));
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 </div>
 <hr>
 
@@ -147,6 +149,7 @@
 		riot.mount("breadcrumb", {title:json.title, link:"#/" + opts.folder + opts.name + "/"});
 		document.getElementById("header-top").style.display="none";
 		document.getElementById("header-navi").style.display="block";
+		document.title = json.authors.join(",") + "『" + json.title + "』｜フロンティア学院図書館";
   });
 
 	const url = opts.folder + "/" + opts.name + "/" + opts.name + "_" + opts.chapter +".txt";
