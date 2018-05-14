@@ -37,12 +37,14 @@
 </div>
 
 <div class="text-right">
-	<a href="https://twitter.com/share" id="tweet-button" class="twitter-share-button"{count} data-hashtags="frontierlibrary">Tweet</a>
+	<a href="https://twitter.com/share" id="tweet-button" class="twitter-share-button" data-hashtags="frontierlibrary">Tweet</a>
 	<script>
 document.getElementById("tweet-button").setAttribute("data-url", document.location.href);
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
 </div>
 <hr>
+
 
 <script type="riot/tag">
 <breadcrumb>
@@ -161,6 +163,7 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 </text>
 </script>
 
+
 <script>
 route("/dl*/*", (name, chapter) => {
 	riot.mount("content", "text", {folder:"dl", name:name, chapter:chapter});
@@ -171,7 +174,6 @@ route("/dl*/", (name) => {
 });
 
 route("/*/*", function(name, chapter){
-	riot.mount("content", "text", {name:name, chapter:chapter});
 });
 
 route("", () =>{
