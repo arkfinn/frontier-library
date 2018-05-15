@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>フロンティア学院図書館</title>
+<meta charset="UTF-8">
+<title>フロンティア学院図書館</title>
 <meta name="keywords" content="パブリックドメイン">
 <meta name="description" content="国立国会図書館デジタルコレクションなどの画像データでしか提供されていないパブリックドメイン文献を文字起こししていくサイト。">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,6 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/riot@3.8/riot+compiler.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/riot-route@3.1.2/dist/route.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.12/marked.min.js"></script>-->
+<script src="https://platform.twitter.com/widgets.js"></script>
 <script src="js/aozora.js"></script>
 <script src="js/markdown.js"></script>
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -18,7 +19,7 @@
 </head>
 <body>
 <div id="navbar-main">
-  <div id="header-top" class="navbar navbar-inverse navbar-fixed-top">
+	<div id="header-top" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<h1 id="sitename"><a href="#">フロンティア学院図書館</a></h1>
@@ -37,11 +38,7 @@
 </div>
 
 <div class="text-right">
-	<a href="https://twitter.com/share" id="tweet-button" class="twitter-share-button" data-hashtags="frontierlibrary">Tweet</a>
-	<script>
-document.getElementById("tweet-button").setAttribute("data-url", document.location.href);
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
-</script>
+	<span id="tweet-button-box"></span>
 </div>
 <hr>
 
@@ -60,9 +57,9 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 <index>
 <p>国立国会図書館デジタルコレクションなどの画像データでしか提供されていないパブリックドメイン文献を文字起こししていくサイト。次のような方針でやっています。</p>
 <ul>
-  <li>翻刻・組版の正確性より内容の共有を重視します。不明な点は底本を参照下さい。</li>
-  <li>全内容の文字起こしを保証しません。作業中で放棄する時もあります。引き継ぎ歓迎します。</li>
-  <li>校正指摘参加表明その他歓迎します。twitter(<a href="https://twitter.com/ark_finn" targetr="_blank">@ark_finn</a>)などへ連絡ください。</li>
+	<li>翻刻・組版の正確性より内容の共有を重視します。不明な点は底本を参照下さい。</li>
+	<li>全内容の文字起こしを保証しません。作業中で放棄する時もあります。引き継ぎ歓迎します。</li>
+	<li>校正指摘参加表明その他歓迎します。twitter(<a href="https://twitter.com/ark_finn" targetr="_blank">@ark_finn</a>)などへ連絡ください。</li>
 	<li>文字起こしされた各文献の内容は、元文献に基づきパブリックドメインとします。<a href="http://www.aozora.gr.jp/guide/kijyunn.html" target="_blank">青空文庫の基準</a>に準じて取り扱ってください。</li>
 </ul>
 	<h2>文献リスト</h2>
@@ -83,8 +80,8 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 	</ul>
 	<h2>ツール</h2>
 	<ul>
-	  <li><a href="tool/aozora_ruby.html">青空文庫形式のルビチェックツール</a></li>
-	  <li><a href="jtexts/viewer.html">J-Textsテキストのビューア</a></li>
+		<li><a href="tool/aozora_ruby.html">青空文庫形式のルビチェックツール</a></li>
+		<li><a href="jtexts/viewer.html">J-Textsテキストのビューア</a></li>
 	</ul>
 	<h2>リンク</h2>
 	<ul>
@@ -102,12 +99,14 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 	document.getElementById("header-top").style.display="block";
 	document.getElementById("header-navi").style.display="none";
 	fetch('list.json').then( function(data) {
-  	return data.json();
-  }).then( function(json) {
-    this.list = json;
-    this.update();
-  }.bind(this));
+		return data.json();
+	}).then( function(json) {
+		this.list = json;
+		this.update();
+	}.bind(this));
 
+	document.getElementById("tweet-button-box").innerHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="frontierlibrary" data-url="'+document.location.href+'">Tweet</a>';
+	twttr.widgets.load();
 </index>
 </script>
 
@@ -124,18 +123,23 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 		<li each={url, origin in originals}>
 			<a target="_blank" href="{url}">{origin}</a>
 		</li>
-  </ul>
+	</ul>
+
 	document.getElementById("header-top").style.display="block";
 	document.getElementById("header-navi").style.display="none";
 	const url = opts.folder + "/" + opts.name + "/detail.json";
 	fetch(url).then((data) => {
-  	return data.json();
+		return data.json();
 	}).then((json) => {
-    this.title = json.title;
+		this.title = json.title;
 		this.authors = json.authors;
 		this.originals = json.originals;
-    this.update();
-  });
+		this.update();
+		document.title = json.authors.join(",") + "『" + json.title + "』｜フロンティア学院図書館";
+		document.getElementById("tweet-button-box").innerHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="frontierlibrary" data-url="'+document.location.href+'">Tweet</a>';
+		twttr.widgets.load();
+	});
+
 
 </detail>
 </script>
@@ -146,13 +150,15 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 
 	const detail_url = opts.folder + "/" + opts.name + "/detail.json";
 	fetch(detail_url).then((data) => {
-  	return data.json();
+		return data.json();
 	}).then((json) => {
 		riot.mount("breadcrumb", {title:json.title, link:"#/" + opts.folder + opts.name + "/"});
 		document.getElementById("header-top").style.display="none";
 		document.getElementById("header-navi").style.display="block";
 		document.title = json.authors.join(",") + "『" + json.title + "』｜フロンティア学院図書館";
-  });
+		document.getElementById("tweet-button-box").innerHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="frontierlibrary" data-url="'+document.location.href+'">Tweet</a>';
+		twttr.widgets.load();
+	});
 
 	const url = opts.folder + "/" + opts.name + "/" + opts.name + "_" + opts.chapter +".txt";
 	fetch(url).then(response => {
@@ -166,19 +172,19 @@ document.getElementById("tweet-button").setAttribute("data-url", document.locati
 
 <script>
 route("/dl*/*", (name, chapter) => {
-	riot.mount("content", "text", {folder:"dl", name:name, chapter:chapter});
-});
+		riot.mount("content", "text", {folder:"dl", name:name, chapter:chapter});
+		});
 
 route("/dl*/", (name) => {
-	riot.mount("content", "detail", {folder:"dl", name:name});
-});
+		riot.mount("content", "detail", {folder:"dl", name:name});
+		});
 
 route("/*/*", function(name, chapter){
-});
+		});
 
 route("", () =>{
-	riot.mount("content", "index");
-});
+		riot.mount("content", "index");
+		});
 
 route.start(true);
 </script>
