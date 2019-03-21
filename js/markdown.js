@@ -19,7 +19,7 @@ function formatMarkdown(txt){
 }
 
 function urlMarkdown(txt){
-	return txt.replace(/(http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- :.\/?%&=]*)?)/gi, "<a href='$1' target='_blank'>$1</a>");
+	return txt.replace(/(http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- :.\/?%&=]*)?)/gi, "<a href='$1' class='url' target='_blank'>$1</a>");
 }
 
 function weightMarkdown(txt){

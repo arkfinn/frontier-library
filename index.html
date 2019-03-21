@@ -70,7 +70,6 @@
 		<li><a href="dl/1150180/">迫間房太郎『産金政策の一私見』</a></li>
 		<li><a href="dl/1091799/">長谷川尚一『石油なくして何の新秩序の建設ぞ』</a></li>
 		<li><a href="dl/1091736/">浅野研真『聖徳太子と社會事業』</a></li>
-		<li><a href="dl/1061941/">佐野學『西洋社會思想史』</a></li>
 		<li><a href="dl/1111709/1111709.html">箕作元八『ギリシヤの撥亂』</a>（作業中）</li>
 		<li><a href="dl/2554896/">井原西鶴『男色大鑑』</a>（作業中）</li>
 		<li><a href="dl/898793/">『墨子』</a>（作業中）</li>
@@ -115,7 +114,9 @@
 	<h1>{title}</h1>
 	<p class="author" each={author in authors}>{author}</p>
 	<div class="text-center">
-		<a class="btn btn-default btn-lg" href="#/{opts.folder}{opts.name}/1">読む</a>
+			<p each={volume, index in volumes}>
+				<a class="btn btn-default btn-lg" href="#/{opts.folder}{opts.name}/{index}">{volume}</a>
+			</p>
 	</div>
 	<hr>
 	<h3>底本</h3>
@@ -134,6 +135,7 @@
 		this.title = json.title;
 		this.authors = json.authors;
 		this.originals = json.originals;
+		this.volumes = json.volumes? json.volumes: {1:"読む"};
 		this.update();
 		document.title = json.authors.join(",") + "『" + json.title + "』｜フロンティア学院図書館";
 		document.getElementById("tweet-button-box").innerHTML = '<a href="https://twitter.com/share" class="twitter-share-button" data-hashtags="frontierlibrary" data-url="'+document.location.href+'">Tweet</a>';
